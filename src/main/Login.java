@@ -15,6 +15,7 @@ public class Login extends JFrame implements ActionListener {
 		getContentPane().setBackground(Color.WHITE);
 		setLayout(null);
 
+		// Username label and text field
 		JLabel lblusername = new JLabel("Username");
 		lblusername.setBounds(40, 50, 100, 30);
 		add(lblusername);
@@ -23,6 +24,7 @@ public class Login extends JFrame implements ActionListener {
 		tfusername.setBounds(150, 50, 150, 30);
 		add(tfusername);
 
+		// Password label and text field
 		JLabel lblpassword = new JLabel("Password");
 		lblpassword.setBounds(40, 100, 100, 30);
 		add(lblpassword);
@@ -31,6 +33,7 @@ public class Login extends JFrame implements ActionListener {
 		tfpassword.setBounds(150, 100, 150, 30);
 		add(tfpassword);
 
+		// Login button
 		login = new JButton("LOGIN");
 		login.setBounds(150, 140, 150, 30);
 		login.setBackground(Color.GREEN);
@@ -38,6 +41,7 @@ public class Login extends JFrame implements ActionListener {
 		login.addActionListener(this);
 		add(login);
 
+		// Register button
 		register = new JButton("REGISTER");
 		register.setBounds(150, 173, 150, 30);
 		register.setBackground(Color.BLUE);
@@ -45,6 +49,7 @@ public class Login extends JFrame implements ActionListener {
 		register.addActionListener(this);
 		add(register);
 
+		// Delete button
 		delete = new JButton("Delete Account");
 		delete.setBounds(150, 206, 150, 30);
 		delete.setBackground(Color.RED);
@@ -52,6 +57,7 @@ public class Login extends JFrame implements ActionListener {
 		delete.addActionListener(this);
 		add(delete);
 
+		// Background image
 		ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/second.jpg"));
 		Image i2 = i1.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT);
 		ImageIcon i3 = new ImageIcon(i2);
@@ -66,6 +72,7 @@ public class Login extends JFrame implements ActionListener {
 
 	public void actionPerformed(ActionEvent ae) {
 
+		// If login button is clicked
 		if (ae.getSource() == login) {
 			try {
 				String username = tfusername.getText();
@@ -85,14 +92,18 @@ public class Login extends JFrame implements ActionListener {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-
-		} else if (ae.getSource() == register) {
+		} 
+		
+		// If register button is clicked
+		else if (ae.getSource() == register) {
 			setVisible(false);
-			new Register();
-
-		} else if (ae.getSource() == delete) {
+			new Register(); // Open register account page
+		}
+		
+		// If delete button is clicked
+		else if (ae.getSource() == delete) {
 			setVisible(false);
-			new Delete();
+			new Delete(); // Open delete account page
 		}
 
 	}

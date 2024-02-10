@@ -18,6 +18,7 @@ public class ViewEmployee extends JFrame implements ActionListener{
 		getContentPane().setBackground(Color.WHITE);
 		setLayout(null);
 		
+		// Background Image
 		ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/view.jpg"));
         Image i2 = i1.getImage().getScaledInstance(1100, 700, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
@@ -25,6 +26,7 @@ public class ViewEmployee extends JFrame implements ActionListener{
         image.setBounds(0, 0, 1050, 700);
         add(image);
 		
+        // Employee ID label and retrieve ID from database
 		JLabel searchlbl = new JLabel("Search by Employee ID");
 		searchlbl.setBounds(20, 20, 150, 20);
 		image.add(searchlbl);
@@ -43,8 +45,6 @@ public class ViewEmployee extends JFrame implements ActionListener{
 			e.printStackTrace();
 		}
 		
-		
-		
 		table = new JTable();
 		
 		try {
@@ -56,10 +56,12 @@ public class ViewEmployee extends JFrame implements ActionListener{
 			e.printStackTrace();
 		}
 		
+		// Table and Scroll Pane
 		JScrollPane jsp = new JScrollPane(table);
 		jsp.setBounds(0, 100, 900, 600);
 		image.add(jsp);
 		
+		// Search, Print, Update, Back buttons
 		search = new JButton("Search");
 		search.setBounds(20, 70, 80, 20);
 		search.addActionListener(this);
@@ -86,6 +88,8 @@ public class ViewEmployee extends JFrame implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent ae) {
+		
+		// If search button is clicked, retrieve data from database and display in table
 		if (ae.getSource() == search) {
 			String query = "select * from employee where empId = '"+cemployeeId.getSelectedItem()+"'";
 			
@@ -102,9 +106,13 @@ public class ViewEmployee extends JFrame implements ActionListener{
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+			
+			// If update button is clicked, get employee ID and open update employee page
 		} else if (ae.getSource() == update) {
 			setVisible(false);
 			new UpdateEmployee(cemployeeId.getSelectedItem());
+			
+			// If back button is clicked, go back to home page
 		} else if (ae.getSource() == back) {
 			setVisible(false);
 			new Home();

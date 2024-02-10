@@ -17,11 +17,13 @@ public class UpdateEmployee extends JFrame implements ActionListener{
 		getContentPane().setBackground(Color.WHITE);
 		setLayout(null);
 		
+		// Heading
 		JLabel heading = new JLabel("Update Employee Detail");
 		heading.setBounds(320, 30, 500, 50);
 		heading.setFont(new Font("SAN_SERIF", Font.BOLD, 25));
 		add(heading);
 		
+		// Name label and textfield
 		JLabel labelname = new JLabel("Name");
 		labelname.setBounds(50, 150, 150, 30);
 		labelname.setFont(new Font("serif", Font.PLAIN, 20));
@@ -31,6 +33,7 @@ public class UpdateEmployee extends JFrame implements ActionListener{
 		lblname.setBounds(200, 150, 150, 30);
 		add(lblname);
 		
+		// Father's Name label and textfield
 		JLabel labelfname = new JLabel("Father's Name");
 		labelfname.setBounds(400, 150, 150, 30);
 		labelfname.setFont(new Font("serif", Font.PLAIN, 20));
@@ -40,6 +43,7 @@ public class UpdateEmployee extends JFrame implements ActionListener{
 		tffname.setBounds(600, 150, 150, 30);
 		add(tffname);
 		
+		// Date of Birth label
 		JLabel labeldob = new JLabel("Date of Birth");
 		labeldob.setBounds(50, 200, 150, 30);
 		labeldob.setFont(new Font("serif", Font.PLAIN, 20));
@@ -49,6 +53,7 @@ public class UpdateEmployee extends JFrame implements ActionListener{
 		lbldob.setBounds(200, 200, 150, 30);
 		add(lbldob);
 		
+		// Salary label and textfield
 		JLabel labelsalary = new JLabel("Salary");
 		labelsalary.setBounds(400, 200, 150, 30);
 		labelsalary.setFont(new Font("serif", Font.PLAIN, 20));
@@ -58,6 +63,7 @@ public class UpdateEmployee extends JFrame implements ActionListener{
 		tfsalary.setBounds(600, 200, 150, 30);
 		add(tfsalary);
 		
+		// Address label and textfield
 		JLabel labeladdress = new JLabel("Address");
 		labeladdress.setBounds(50, 250, 150, 30);
 		labeladdress.setFont(new Font("serif", Font.PLAIN, 20));
@@ -67,6 +73,7 @@ public class UpdateEmployee extends JFrame implements ActionListener{
 		tfaddress.setBounds(200, 250, 150, 30);
 		add(tfaddress);
 		
+		// Phone label and textfield
 		JLabel labelphone = new JLabel("Phone");
 		labelphone.setBounds(400, 250, 150, 30);
 		labelphone.setFont(new Font("serif", Font.PLAIN, 20));
@@ -76,6 +83,7 @@ public class UpdateEmployee extends JFrame implements ActionListener{
 		tfphone.setBounds(600, 250, 150, 30);
 		add(tfphone);
 		
+		// Email label and textfield
 		JLabel labelemail = new JLabel("Email");
 		labelemail.setBounds(50, 300, 150, 30);
 		labelemail.setFont(new Font("serif", Font.PLAIN, 20));
@@ -85,6 +93,7 @@ public class UpdateEmployee extends JFrame implements ActionListener{
 		tfemail.setBounds(200, 300, 150, 30);
 		add(tfemail);
 		
+		// Highest Education label and textfield
 		JLabel labeleducation = new JLabel("Highest Education");
 		labeleducation.setBounds(400, 300, 150, 30);
 		labeleducation.setFont(new Font("serif", Font.PLAIN, 20));
@@ -94,6 +103,7 @@ public class UpdateEmployee extends JFrame implements ActionListener{
 		tfeducation.setBounds(600, 300, 150, 30);
 		add(tfeducation);
 		
+		// Designation label and textfield
 		JLabel labeldesignation = new JLabel("Designation");
 		labeldesignation.setBounds(50, 350, 150, 30);
 		labeldesignation.setFont(new Font("serif", Font.PLAIN, 20));
@@ -103,6 +113,7 @@ public class UpdateEmployee extends JFrame implements ActionListener{
 		tfdesignation.setBounds(200, 350, 150, 30);
 		add(tfdesignation);
 		
+		// SSN label
 		JLabel labelssn = new JLabel("SSN");
 		labelssn.setBounds(400, 350, 150, 30);
 		labelssn.setFont(new Font("serif", Font.PLAIN, 20));
@@ -112,6 +123,7 @@ public class UpdateEmployee extends JFrame implements ActionListener{
 		lblssn.setBounds(600, 350, 150, 30);
 		add(lblssn);
 		
+		// Employee ID label and textfield
 		JLabel labelempId = new JLabel("Employee ID");
 		labelempId.setBounds(50, 400, 150, 30);
 		labelempId.setFont(new Font("serif", Font.PLAIN, 20));
@@ -122,6 +134,7 @@ public class UpdateEmployee extends JFrame implements ActionListener{
 		lblempId.setFont(new Font("serif", Font.PLAIN, 20));
 		add(lblempId);
 		
+		// Fetching employee data from database
 		try {
 			Conn c = new Conn();
 			String query = "select * from employee where empId = '"+empId+"'";
@@ -144,6 +157,7 @@ public class UpdateEmployee extends JFrame implements ActionListener{
 			e.printStackTrace();
 		}
 		
+		// Update Button
 		add = new JButton("Update Details");
         add.setBounds(250, 550, 150, 40);
         add.addActionListener(this);
@@ -151,6 +165,7 @@ public class UpdateEmployee extends JFrame implements ActionListener{
         add.setForeground(Color.WHITE);
         add(add);
         
+        // Back Button
         back = new JButton("Back");
         back.setBounds(450, 550, 150, 40);
         back.addActionListener(this);
@@ -166,6 +181,8 @@ public class UpdateEmployee extends JFrame implements ActionListener{
 	}
 	
 	public void actionPerformed(ActionEvent ae) {
+		
+		// If add button is clicked, update employee details
 		if (ae.getSource() == add) {
 			String fname = tffname.getText();
 			String salary = tfsalary.getText();
@@ -186,7 +203,7 @@ public class UpdateEmployee extends JFrame implements ActionListener{
 				e.printStackTrace();
 			}
 			
-			
+			// If back button is clicked, go back to home
 		} else  if (ae.getSource() == back) {
 			setVisible(false);
 			new Home();

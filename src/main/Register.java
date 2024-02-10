@@ -22,10 +22,12 @@ public class Register extends JFrame implements ActionListener{
         getContentPane().setBackground(Color.WHITE);
         setLayout(null);
         
+        // Register account label
         JLabel lbltitle = new JLabel("Register New Account");
         lbltitle.setBounds(160, 20, 130, 30);
         add(lbltitle);
         
+        // Username label and text field
         JLabel lblusername = new JLabel("Username");
         lblusername.setBounds(40, 60, 100, 30);
         add(lblusername);
@@ -34,6 +36,7 @@ public class Register extends JFrame implements ActionListener{
         tfusername.setBounds(150, 60, 150, 30);
         add(tfusername);
         
+        // Password label and text field
         JLabel lblpassword = new JLabel("Password");
         lblpassword.setBounds(40, 100, 100, 30);
         add(lblpassword);
@@ -42,6 +45,7 @@ public class Register extends JFrame implements ActionListener{
         tfpassword.setBounds(150, 100, 150, 30);
         add(tfpassword);
         
+        // Back button
         back = new JButton("RETURN");
         back.setBounds(150, 180, 150, 30); 
         back.setBackground(Color.BLACK);
@@ -49,6 +53,7 @@ public class Register extends JFrame implements ActionListener{
         back.addActionListener(this);
         add(back);
         
+        // Register button
         register = new JButton("REGISTER");
         register.setBounds(150, 140, 150, 30);
         register.setBackground(Color.BLACK);
@@ -56,6 +61,7 @@ public class Register extends JFrame implements ActionListener{
         register.addActionListener(this);
         add(register);
         
+        // Background image
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/second.jpg"));
         Image i2 = i1.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
@@ -74,6 +80,7 @@ public class Register extends JFrame implements ActionListener{
 	
 	
 	public void actionPerformed(ActionEvent ae) {
+		// If the register button is clicked register the user and add values to the database
 		if (ae.getSource() == register) {
 			String username = tfusername.getText();
 			String password = tfpassword.getText();
@@ -89,7 +96,7 @@ public class Register extends JFrame implements ActionListener{
 				e.printStackTrace();
 			}
 			
-			
+			// If the back button is clicked go back to the login page
 		} else  if (ae.getSource() == back) {
 			setVisible(false);
 			new Login();

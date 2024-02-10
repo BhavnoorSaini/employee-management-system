@@ -22,10 +22,12 @@ public class Delete extends JFrame implements ActionListener {
 		getContentPane().setBackground(Color.WHITE);
 		setLayout(null);
 
+		// Delete Account label
 		JLabel lbltitle = new JLabel("Delete Account");
 		lbltitle.setBounds(160, 20, 130, 30);
 		add(lbltitle);
 
+		// Username label and textfield
 		JLabel lblusername = new JLabel("Username");
 		lblusername.setBounds(40, 60, 100, 30);
 		add(lblusername);
@@ -34,6 +36,7 @@ public class Delete extends JFrame implements ActionListener {
 		tfusername.setBounds(150, 60, 150, 30);
 		add(tfusername);
 
+		// Password label and textfield
 		JLabel lblpassword = new JLabel("Password");
 		lblpassword.setBounds(40, 100, 100, 30);
 		add(lblpassword);
@@ -42,6 +45,7 @@ public class Delete extends JFrame implements ActionListener {
 		tfpassword.setBounds(150, 100, 150, 30);
 		add(tfpassword);
 
+		// Return button
 		back = new JButton("RETURN");
 		back.setBounds(150, 180, 150, 30);
 		back.setBackground(Color.BLACK);
@@ -49,6 +53,7 @@ public class Delete extends JFrame implements ActionListener {
 		back.addActionListener(this);
 		add(back);
 
+		// Delete button
 		delete = new JButton("DELETE ACCOUNT");
 		delete.setBounds(150, 140, 150, 30);
 		delete.setBackground(Color.BLACK);
@@ -56,6 +61,7 @@ public class Delete extends JFrame implements ActionListener {
 		delete.addActionListener(this);
 		add(delete);
 
+		// Background Image
 		ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/second.jpg"));
 		Image i2 = i1.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT);
 		ImageIcon i3 = new ImageIcon(i2);
@@ -73,10 +79,13 @@ public class Delete extends JFrame implements ActionListener {
 			String username = tfusername.getText();
 			String password = tfpassword.getText();
 
+			// Get username and password from database
 			Conn c = new Conn();
 			String query = "select * from login where username = '" + username + "' and password = '" + password + "'";
 
 			ResultSet rs = c.s.executeQuery(query);
+			
+			// If username and password are correct then delete the account
 			if (rs.next()) {
 				try {
 					Conn cc = new Conn();
@@ -88,10 +97,14 @@ public class Delete extends JFrame implements ActionListener {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+				
+				// If return button is clicked then go back to login page
 			} else if (ae.getSource() == back) {
 				setVisible(false);
-                new Login();
-			} else {
+				new Login();
+				
+				// If username and password are incorrect then show error message
+			} else { 
 				JOptionPane.showMessageDialog(null, "Invalid username or password");
 			}
 		} catch (Exception e) {

@@ -15,6 +15,7 @@ public class RemoveEmployee extends JFrame implements ActionListener{
 		getContentPane().setBackground(Color.WHITE);
 		setLayout(null);
 		
+		// Fixed employee Id from database
 		JLabel lblempId = new JLabel("Employee Id");
 		lblempId.setBounds(50, 50, 100, 30);
 		add(lblempId);
@@ -34,6 +35,7 @@ public class RemoveEmployee extends JFrame implements ActionListener{
 			e.printStackTrace();
 		}
 		
+		// Employee Information
 		JLabel labelname = new JLabel("Name");
 		labelname.setBounds(50, 100, 100, 30);
 		add(labelname);
@@ -58,6 +60,7 @@ public class RemoveEmployee extends JFrame implements ActionListener{
 		lblemail.setBounds(200, 200, 100, 30);
 		add(lblemail);
 		
+		// Fetching Employee Information from database
 		try {
 			Conn c = new Conn();
 			String query = "select * from employee where empId = '"+cEmpId.getSelectedItem()+"'";
@@ -88,6 +91,7 @@ public class RemoveEmployee extends JFrame implements ActionListener{
 			}
 		});
 		
+		// Delete employee button
 		delete = new JButton("Delete");
 		delete.setBounds(80,300, 100, 30);
 		delete.setBackground(Color.BLACK);
@@ -95,6 +99,7 @@ public class RemoveEmployee extends JFrame implements ActionListener{
 		delete.addActionListener(this);
 		add(delete);
 		
+		// Back button
 		back = new JButton("back");
 		back.setBounds(220,300, 100, 30);
 		back.setBackground(Color.BLACK);
@@ -102,6 +107,7 @@ public class RemoveEmployee extends JFrame implements ActionListener{
 		back.addActionListener(this);
 		add(back);
 		
+		// Background Image
 		ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/delete.png"));
         Image i2 = i1.getImage().getScaledInstance(600, 400, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
@@ -117,6 +123,8 @@ public class RemoveEmployee extends JFrame implements ActionListener{
 	
 	
 	public void actionPerformed(ActionEvent ae) {
+		
+		// If delete button is clicked, delete employee information from database
 		if (ae.getSource() == delete) {
 			try {
 				Conn c = new Conn();
@@ -129,6 +137,7 @@ public class RemoveEmployee extends JFrame implements ActionListener{
 				e.printStackTrace();
 			}
 			
+			// If back button is clicked, go back to Home page
 		} else if (ae.getSource() == back) {
 			setVisible(false);
 			new Home();
