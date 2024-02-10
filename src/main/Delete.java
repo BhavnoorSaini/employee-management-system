@@ -88,6 +88,9 @@ public class Delete extends JFrame implements ActionListener {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+			} else if (ae.getSource() == back) {
+				setVisible(false);
+                new Login();
 			} else {
 				JOptionPane.showMessageDialog(null, "Invalid username or password");
 			}
