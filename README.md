@@ -78,8 +78,11 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 ## Authors
 Bhavnoor Saini
 
+### Credits
+Code for Interview
+
 ## Support
 For help and support, please contact bhavnoorsaini@icloud.com.
 
-## Credits
-Code for Interview
+## License
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details.
