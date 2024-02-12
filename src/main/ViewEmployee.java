@@ -124,8 +124,4 @@ public class ViewEmployee extends JFrame implements ActionListener{
 		new ViewEmployee();
 	}
 
-
-
-	
-
 }
